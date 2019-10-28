@@ -158,8 +158,8 @@ bool pokerTest(string sequence)
 	{
 		temp += (array[i] * array[i]);
 	}
-	x = (16/5000) *temp - 5000;
-	if (x > 2,16 && x < 46,17)
+	x = (16.0/5000.0) *temp - 5000.0;
+	if (x > 2.16 && x < 46.17)
 	{
 		cout << "Poker Test is passed" << endl;
 		return true;
@@ -199,9 +199,9 @@ bool runsTest(string sequence)
 {
 	int array[6] = { 0 };
 	int count = 0;
-	for (int i = 1; i < sequence.length(); i++)
+	for (int i = 0; i < sequence.length(); i++)
 	{
-		if (sequence[i] == sequence[i - 1])
+		if (sequence[i] == '0')
 		{
 			count++;
 		}
@@ -235,7 +235,7 @@ bool runsTest(string sequence)
 	{
 		cout << array[i] << endl;
 	}
-	if (array[0] > 2267 && array[0] < 2733 && array[1]>1079 && array[1] < 1421 && array[2]>502 && array[2] < 748 && array[3] > 223 && array[3] < 402 && array[4]>90 && array[4] < 223 && array[5]>90 && array[5] < 223)
+	if (array[0] > 2343 && array[0] < 2657 && array[1]>1135 && array[1] < 1365 && array[2]>542 && array[2] < 708 && array[3] > 251 && array[3] < 373 && array[4]>111 && array[4] < 201 && array[5]>111 && array[5] < 201)
 	{
 		cout << "Runs Test is passed" << endl;
 		return true;
