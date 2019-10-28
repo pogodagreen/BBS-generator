@@ -231,6 +231,10 @@ bool runsTest(string sequence)
 			count = 1;
 		}
 	}
+	for (int i = 0; i < 6; i++)
+	{
+		cout << array[i] << endl;
+	}
 	if (array[0] > 2267 && array[0] < 2733 && array[1]>1079 && array[1] < 1421 && array[2]>502 && array[2] < 748 && array[3] > 223 && array[3] < 402 && array[4]>90 && array[4] < 223 && array[5]>90 && array[5] < 223)
 	{
 		cout << "Runs Test is passed" << endl;
