@@ -188,11 +188,61 @@ bool longRunsTest(string sequence)
 		}
 		else
 		{
-			count = 0;
+			count = 1;
 		}
 	}
 	cout << "Long Runs Test is passed" << endl;
 	return true;
+}
+
+bool runsTest(string sequence)
+{
+	int array[6] = { 0 };
+	int count = 0;
+	for (int i = 1; i < sequence.length(); i++)
+	{
+		if (sequence[i] == sequence[i - 1])
+		{
+			count++;
+		}
+		else
+		{
+			switch (count)
+			{
+			case 1: 
+				array[count - 1]++;
+				break;
+			case 2:
+				array[count - 1]++;
+				break;
+			case 3:
+				array[count - 1]++;
+				break;
+			case 4:
+				array[count - 1]++;
+				break;
+			case 5:
+				array[count - 1]++;
+				break;
+			default:
+				array[5]++;
+				break;
+			}
+			count = 1;
+		}
+	}
+	if (array[0] > 2267 && array[0] < 2733 && array[1]>1079 && array[1] < 1421 && array[2]>502 && array[2] < 748 && array[3] > 223 && array[3] < 402 && array[4]>90 && array[4] < 223 && array[5]>90 && array[5] < 223)
+	{
+		cout << "Runs Test is passed" << endl;
+		return true;
+	}
+	else
+	{
+		cout << "Runs Test is not passed" << endl;
+		return false;
+	}
+	
+	
 }
 
 int main()
@@ -204,6 +254,7 @@ int main()
 	singleBitsTest(sequence);
 	pokerTest(sequence);
 	longRunsTest(sequence);
+	runsTest(sequence);
 	getchar;
 }
 
