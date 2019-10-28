@@ -157,7 +157,6 @@ bool pokerTest(string sequence)
 	for (int i = 0; i < 16; i++)
 	{
 		temp += (array[i] * array[i]);
-		cout << i << ": " << array[i] << endl;
 	}
 	x = (16/5000) *temp - 5000;
 	if (x > 2,16 && x < 46,17)
@@ -172,6 +171,30 @@ bool pokerTest(string sequence)
 	}
 }
 
+bool longRunsTest(string sequence)
+{
+	int count = 0;
+	for (int i = 1; i <= sequence.length(); i++)
+	{
+		if (sequence[i] == sequence[i-1])
+		{
+			count++;
+			if (count > 25)
+			{
+				cout << "Long Runs Test is not passed" << endl;
+				return false;
+				break;
+			}
+		}
+		else
+		{
+			count = 0;
+		}
+	}
+	cout << "Long Runs Test is passed" << endl;
+	return true;
+}
+
 int main()
 {
 	uint64_t p=11699, q=7219, x=3;
@@ -180,6 +203,7 @@ int main()
 	string sequence = BBS(p, q, x, length);
 	singleBitsTest(sequence);
 	pokerTest(sequence);
+	longRunsTest(sequence);
 	getchar;
 }
 
