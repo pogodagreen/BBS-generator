@@ -42,7 +42,7 @@ string generateSequence(uint64_t x, uint64_t N, int length)
 {
 	string klucz;
 	string pom = "0";
-	int value = (x*x) % N;
+	uint64_t value = (x*x) % N;
 	for (int i = 0; i < length; i++)
 	{
 		pom=to_string(value & 1);
@@ -72,12 +72,114 @@ string BBS(uint64_t p, uint64_t q, uint64_t x, int length)
 		return "Blad";
 }
 
+bool singleBitsTest(string sequence)
+{
+	int count=0;
+	for (int i = 0; i < sequence.length(); i++)
+	{
+		if (sequence[i] == '1')
+			count++;
+	}
+	cout << "Single Bits Test: Count 1 " << count << endl;
+	if (count > 9725 && count < 10275)
+	{
+		cout << "Single Bits Test is passed" << endl;
+		return true;
+	}
+	else
+	{
+		cout << "Single Bits Test is not passed" << endl;
+		return false;
+	}
+}
+
+bool pokerTest(string sequence)
+{
+	int array[16] = { 0 };
+	int i = 0;
+	int value = 0;
+	double x=0, temp=0;
+	do
+	{
+		value =	(sequence[i++]-48) * 8 + (sequence[i++]-48) * 4 + (sequence[i++]-48) * 2 + (sequence[i++]-48);
+		switch (value)
+		{
+		case 0: 
+			array[value]++;
+			break;
+		case 1:
+			array[value]++;
+			break;
+		case 2:
+			array[value]++;
+			break;
+		case 3:
+			array[value]++;
+			break;
+		case 4:
+			array[value]++;
+			break;
+		case 5:
+			array[value]++;
+			break;
+		case 6:
+			array[value]++;
+			break;
+		case 7:
+			array[value]++;
+			break;
+		case 8:
+			array[value]++;
+			break;
+		case 9:
+			array[value]++;
+			break;
+		case 10:
+			array[value]++;
+			break;
+		case 11:
+			array[value]++;
+			break;
+		case 12:
+			array[value]++;
+			break;
+		case 13:
+			array[value]++;
+			break;
+		case 14:
+			array[value]++;
+			break;
+		case 15:
+			array[value]++;
+			break;
+		}
+	} while (i < sequence.length());
+	for (int i = 0; i < 16; i++)
+	{
+		temp += (array[i] * array[i]);
+		cout << i << ": " << array[i] << endl;
+	}
+	x = (16/5000) *temp - 5000;
+	if (x > 2,16 && x < 46,17)
+	{
+		cout << "Poker Test is passed" << endl;
+		return true;
+	}
+	else
+	{
+		cout << "Poker Test is not passed" << endl;
+		return false;
+	}
+}
+
 int main()
 {
-	uint64_t p=11, q=19, x=281;
+	uint64_t p=11699, q=7219, x=3;
 	int length=20000;
+	int sbt = 0;
 	string sequence = BBS(p, q, x, length);
-	cout << sequence;
+	singleBitsTest(sequence);
+	pokerTest(sequence);
 	getchar;
 }
 
