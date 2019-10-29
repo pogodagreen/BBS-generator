@@ -1,6 +1,7 @@
 #include "pch.h"
 #include <iostream>
 #include <math.h>
+#include <time.h>
 #include <string>
 
 using namespace std;
@@ -258,6 +259,7 @@ bool runsTest(string sequence)
 int main()
 {
 	uint64_t p=11699, q=7219, x=6451;
+	srand(time(NULL));
 	do
 	{
 		p = rand() % 10000+4000;
@@ -266,10 +268,11 @@ int main()
 	{
 		q = rand() % 10000+4000;
 	} while (!isPrime(q)|| !(q%4==3));
+	uint64_t N = p*q;
 	do
 	{
 		x = rand() % 10000 + 4000;
-	} while (!isPrime(x));
+	} while (!isPrime(x) || !isCoPrime(N,x));
 	int length=20000;
 	string sequence = BBS(p, q, x, length);
 	singleBitsTest(sequence);
