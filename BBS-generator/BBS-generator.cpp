@@ -199,36 +199,42 @@ bool runsTest(string sequence)
 {
 	int array[6] = { 0 };
 	int count = 0;
-	for (int i = 0; i < sequence.length(); i++)
+	for (int i = 1; i < sequence.length(); i++)
 	{
-		if (sequence[i] == '0')
+		if (sequence[i]== 48)
 		{
 			count++;
 		}
 		else
 		{
+			if (count >= 6)
+			{
+				count = 6;
+			}
 			switch (count)
 			{
 			case 1: 
-				array[count - 1]++;
+				array[0]++;
 				break;
 			case 2:
-				array[count - 1]++;
+				array[1]++;
 				break;
 			case 3:
-				array[count - 1]++;
+				array[2]++;
 				break;
 			case 4:
-				array[count - 1]++;
+				array[3]++;
 				break;
 			case 5:
-				array[count - 1]++;
+				array[4]++;
 				break;
-			default:
+			case 6:
 				array[5]++;
 				break;
+			default:
+				break;
 			}
-			count = 1;
+			count = 0;
 		}
 	}
 	for (int i = 0; i < 6; i++)
@@ -251,7 +257,7 @@ bool runsTest(string sequence)
 
 int main()
 {
-	uint64_t p=11699, q=7219, x=3;
+	uint64_t p=11699, q=7219, x=6451;
 	int length=20000;
 	int sbt = 0;
 	string sequence = BBS(p, q, x, length);
