@@ -258,8 +258,19 @@ bool runsTest(string sequence)
 int main()
 {
 	uint64_t p=11699, q=7219, x=6451;
+	do
+	{
+		p = rand() % 10000+4000;
+	} while (!isPrime(p) || !(p%4==3));
+	do
+	{
+		q = rand() % 10000+4000;
+	} while (!isPrime(q)|| !(q%4==3));
+	do
+	{
+		x = rand() % 10000 + 4000;
+	} while (!isPrime(x));
 	int length=20000;
-	int sbt = 0;
 	string sequence = BBS(p, q, x, length);
 	singleBitsTest(sequence);
 	pokerTest(sequence);
